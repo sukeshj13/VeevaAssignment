@@ -1,0 +1,26 @@
+{
+    "cucumberautocomplete.steps": ["./src/test/java/**/**/**/**/*.java"],
+    "cucumberautocomplete.syncfeatures": "./src/test/resources/**/**/**/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.smartSnippets": true,
+    "cucumberautocomplete.stepsInvariants": true,
+    "cucumberautocomplete.customParameters": [
+      {
+        "parameter": "{ab}",
+        "value": "(a|b)"
+      }
+    ],
+    "cucumberautocomplete.skipDocStringsFormat": true,
+    "cucumberautocomplete.formatConfOverride": {
+      "And": 3,
+      "But": "relative"
+    },
+    "cucumberautocomplete.onTypeFormat": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "strings": true,
+      "other": true
+    },
+    "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+    "debug.node.autoAttach": "on"
+  }
