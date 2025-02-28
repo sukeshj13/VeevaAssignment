@@ -1,4 +1,4 @@
-package com.automatedtest.sample.shoppage;
+package com.automatedtest.sample.pages;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,15 +28,18 @@ public class ShopPage extends BasePage{
     @FindBy(xpath = "//*[@class=\"product-card-title\"]/a")
     private List<WebElement> productTitles;
 
+    @FindBy(xpath = "//i[@class='icon icon-right-arrow' and @role='presentation']")
+    private WebElement nextpage;
+
 
     
 
 
-    ShopPage() {
+    public ShopPage() {
         PageFactory.initElements(driver, this);
     }
 
-    void searchForProduct(String searchValue) {
+    public void searchForProduct(String searchValue) {
         
         wait.forElementToBeDisplayed(10, this.searchBar, "Search Bar");
         this.searchBar.sendKeys(searchValue);
@@ -45,7 +48,7 @@ public class ShopPage extends BasePage{
         this.searchButton.click();
     }
 
-    void switchtoWindow() throws InterruptedException {
+    public void switchtoWindow() throws InterruptedException {
         for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
         }
@@ -56,23 +59,38 @@ public class ShopPage extends BasePage{
     public void captureProductInfo() {
         List<String> prodTitles = new ArrayList<>();
         List<String> priceTitles = new ArrayList<>();
-    
-        for (WebElement element : productTitles) {
-            prodTitles.add(element.getAttribute("title"));
+
+        while (true) {
+            wait.forElementToBeDisplayed(10, this.nextpage, "Next Page");
+            for (WebElement element : productTitles) {
+                prodTitles.add(element.getAttribute("title"));
+            }
+            for (WebElement element : productPrices) {
+                priceTitles.add(element.getText());
+            }
+
+            try {     
+                if (this.nextpage.isEnabled()) {
+                    this.nextpage.click();
+                    Thread.sleep(2000);
+                } else {
+                    break;
+                }
+            } catch (Exception e) {
+                break;
+            }
         }
-        for (WebElement element : productPrices) {
-            priceTitles.add(element.getText());
-        }
-    
+
         try (CSVWriter writer = new CSVWriter(new FileWriter("./output/productInfo.csv"))) {
-            for (int i = 0; i < productTitles.size(); i++) {
-                String title = productTitles.get(i).getText();
-                String price = productPrices.get(i).getText();
+            for (int i = 0; i < prodTitles.size(); i++) {
+                String title = prodTitles.get(i);
+                String price = priceTitles.get(i);
                 writer.writeNext(new String[]{title, price});
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     

@@ -2,25 +2,21 @@ package com.automatedtest.sample.infrastructure.driver;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+
+import com.automatedtest.sample.basepage.BasePage;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 
-public class TearDown {
+public class TearDown extends BasePage{
 
-    private WebDriver driver;
-
-    public TearDown() {
-        this.driver = Setup.driver;
-    }
-
+    
     @After
     public void quitDriver(Scenario scenario){
         if(scenario.isFailed()){
            saveScreenshotsForScenario(scenario);
         }
-        // this.driver.quit();
+        driver.quit();
     }
 
     private void saveScreenshotsForScenario(final Scenario scenario) {

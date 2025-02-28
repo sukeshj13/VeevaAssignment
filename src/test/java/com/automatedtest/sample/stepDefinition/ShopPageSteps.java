@@ -1,4 +1,6 @@
-package com.automatedtest.sample.shoppage;
+package com.automatedtest.sample.stepDefinition;
+
+import com.automatedtest.sample.pages.ShopPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -6,10 +8,10 @@ import io.cucumber.java.en.When;
 public class ShopPageSteps {
 
 
-    private ShopPage shopPage;
+    public ShopPage shopPage;
 
     public ShopPageSteps() {
-        this.shopPage = new ShopPage();
+        shopPage = new ShopPage();
     }
 
     @When("^I search for \"([^\"]*)\" on the shopping page$")

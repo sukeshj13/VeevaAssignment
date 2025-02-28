@@ -24,4 +24,4 @@ You can also select specific scenarios to execute using `-Dcucumber.options="--t
 
 ## Output For Price and  Product title ##
 
-Refer to output directory on the classpath for the CSV file with all details captured.
+Refer to output directory on the classpath for the CSV file with all details captured.git status

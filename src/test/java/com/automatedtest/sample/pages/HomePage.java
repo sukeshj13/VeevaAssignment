@@ -1,4 +1,4 @@
-package com.automatedtest.sample.homepage;
+package com.automatedtest.sample.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -24,21 +24,21 @@ public class HomePage extends BasePage{
     
 
 
-    HomePage() {
+    public HomePage() {
         PageFactory.initElements(driver, this);
     }
 
-    void goToHomePage(String url){
+    public void goToHomePage(String url){
         driver.get(url);
         wait.forLoading(2);
     }
 
-    void closePopUp() {
+    public void closePopUp() {
         wait.forElementToBeDisplayed(10, this.closePopUp, "Home Page Pop Up");
         this.closePopUp.click();
     }
 
-    void selectShopMenu() {
+    public void selectShopMenu() {
         wait.forElementToBeDisplayed(10, this.mainMenu, "Main menu shopping button");
         Actions actions = new Actions(driver);
         actions.moveToElement(this.mainMenu).perform();
