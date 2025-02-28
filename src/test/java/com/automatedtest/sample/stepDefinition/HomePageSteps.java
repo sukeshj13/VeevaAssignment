@@ -25,5 +25,14 @@ public class HomePageSteps {
     public void selectShoppingMenu() {
         homePage.selectShopMenu();
     }
-    
+
+    @Then("^I select News and features on home page$")
+    public void selectNewsAndFeatures() {
+        homePage.selectNewsAndFeatures();
+    }
+
+    @Then("^I capture total number of video Feed present on the page$")
+    public void captureVideoFeed() {
+        homePage.captureVideoFeed();
+    }
 }
