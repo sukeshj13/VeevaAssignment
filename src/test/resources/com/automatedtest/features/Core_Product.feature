@@ -3,7 +3,7 @@ Feature: Core product feature test cases
 
 
   @CP1
-  Scenario Outline: Search cucumber studio
+  Scenario Outline: Search for products on the shopping page
     Given I navigates to core product website "https://www.nba.com/warriors"
     Then I select menu Shop and sub menu Men's
 
