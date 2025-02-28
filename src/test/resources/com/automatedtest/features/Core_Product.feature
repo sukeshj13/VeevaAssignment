@@ -3,7 +3,7 @@ Feature: Core product feature test cases
 
 
   @CP1
-  Scenario Outline: Search for products on the shopping page
+  Scenario: Search for products on the shopping page
     Given I navigates to core product website "https://www.nba.com/warriors"
     Then I select menu Shop and sub menu Men's
 
@@ -11,7 +11,7 @@ Feature: Core product feature test cases
     Then I capture title and price for products in CSV file
 
   @CP2
-  Scenario Outline: Search for products on the shopping page
+  Scenario: Search for products on the shopping page
     Given I navigates to core product website "https://www.nba.com/warriors"
     Then I select News and features on home page
     And I capture total number of video Feed present on the page

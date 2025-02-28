@@ -59,17 +59,19 @@ public class HomePage extends BasePage{
         this.subMenu.click();
     }
 
-    public void selectNewsAndFeatures() {
+    public void selectNewsAndFeatures() throws InterruptedException {
         wait.forElementToBeDisplayed(10, this.threeDots, "Three dots on home page");
         Actions actions = new Actions(driver);
         actions.moveToElement(this.threeDots).perform();
+        Thread.sleep(1000);
 
         wait.forElementToBeDisplayed(10, this.newsAndFeatures, "News and Features on home page");
         this.newsAndFeatures.click();
     }
 
-    public void captureVideoFeed() {
+    public void captureVideoFeed() throws InterruptedException {
         wait.forElementToBeDisplayed(10, this.videoSection, "Video section");
+        Thread.sleep(1000);
         System.out.println("Total number of video feed present on the page: " + videoList.size());
     }
 }

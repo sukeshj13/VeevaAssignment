@@ -24,6 +24,7 @@ public class Setup {
                 chromeOptions.addArguments("['start-maximized']");
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 driver = new ChromeDriver(chromeOptions);
+                driver.manage().window().maximize();
                 break;
             case "firefox":
                 driver = new FirefoxDriver();

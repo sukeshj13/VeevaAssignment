@@ -27,12 +27,12 @@ public class HomePageSteps {
     }
 
     @Then("^I select News and features on home page$")
-    public void selectNewsAndFeatures() {
+    public void selectNewsAndFeatures() throws InterruptedException {
         homePage.selectNewsAndFeatures();
     }
 
     @Then("^I capture total number of video Feed present on the page$")
-    public void captureVideoFeed() {
+    public void captureVideoFeed() throws InterruptedException {
         homePage.captureVideoFeed();
     }
 }

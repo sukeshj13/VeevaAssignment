@@ -22,6 +22,14 @@ By default, tests will run on Chrome. To change that, specify `-Dbrowser={browse
 
 You can also select specific scenarios to execute using `-Dcucumber.options="--tags @your_tag"`. More info about tags and how to combine them [here](https://github.com/cucumber/cucumber/tree/master/tag-expressions).
 
+## Feature File / Test cases ##
+
+Feature file for both coreproduct test case is present at ./resource/com/automatedtest/features
+
 ## Output For Price and  Product title ##
 
+TC # 1 Output
 Refer to output directory on the classpath for the CSV file with all details captured.git status
+
+TC # 1 Output
+Total number of video count is printed in SOP 
