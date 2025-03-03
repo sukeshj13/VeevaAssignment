@@ -2,6 +2,8 @@ package com.automatedtest.sample.pages;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.automatedtest.sample.basepage.BasePage;
 import com.opencsv.CSVWriter;
+
+import io.cucumber.java.Scenario;
 
 
 public class ShopPage extends BasePage{
@@ -56,7 +60,7 @@ public class ShopPage extends BasePage{
         Thread.sleep(10000);
     }
 
-    public void captureProductInfo() {
+    public void captureProductInfo(Scenario scenario) {
         List<String> prodTitles = new ArrayList<>();
         List<String> priceTitles = new ArrayList<>();
 
@@ -87,6 +91,14 @@ public class ShopPage extends BasePage{
                 String price = priceTitles.get(i);
                 writer.writeNext(new String[]{title, price});
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String filePath = "./output/productInfo.csv";
+        try {
+            byte[] csvContent = Files.readAllBytes(Paths.get(filePath)); 
+            scenario.embed(csvContent, "text/csv", "Product Info");
         } catch (IOException e) {
             e.printStackTrace();
         }
